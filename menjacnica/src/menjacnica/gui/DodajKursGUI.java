@@ -46,7 +46,7 @@ public class DodajKursGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DodajKursGUI(MenjacnicaGUI glavniProzor) {
+	public DodajKursGUI() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(DodajKursGUI.class.getResource("/icons/Screenshot.png")));
 		setResizable(false);
 		setTitle("Dodaj kurs");
@@ -90,7 +90,7 @@ public class DodajKursGUI extends JFrame {
 		}
 		return lblNaziv;
 	}
-	private JTextField getTextFieldNaziv() {
+	public JTextField getTextFieldNaziv() {
 		if (textFieldNaziv == null) {
 			textFieldNaziv = new JTextField();
 			textFieldNaziv.setColumns(10);
@@ -111,14 +111,14 @@ public class DodajKursGUI extends JFrame {
 		}
 		return lblKupovniKurs;
 	}
-	private JTextField getTextFieldProdajniKurs() {
+	public JTextField getTextFieldProdajniKurs() {
 		if (textFieldProdajniKurs == null) {
 			textFieldProdajniKurs = new JTextField();
 			textFieldProdajniKurs.setColumns(10);
 		}
 		return textFieldProdajniKurs;
 	}
-	private JTextField getTextFieldKupovniKurs() {
+	public JTextField getTextFieldKupovniKurs() {
 		if (textFieldKupovniKurs == null) {
 			textFieldKupovniKurs = new JTextField();
 			textFieldKupovniKurs.setColumns(10);
@@ -139,14 +139,14 @@ public class DodajKursGUI extends JFrame {
 		}
 		return lblSkraceniNaziv;
 	}
-	private JTextField getTextFieldSrednjiKurs() {
+	public JTextField getTextFieldSrednjiKurs() {
 		if (textFieldSrednjiKurs == null) {
 			textFieldSrednjiKurs = new JTextField();
 			textFieldSrednjiKurs.setColumns(10);
 		}
 		return textFieldSrednjiKurs;
 	}
-	private JTextField getTextFieldSkraceniNaziv() {
+	public JTextField getTextFieldSkraceniNaziv() {
 		if (textFieldSkraceniNaziv == null) {
 			textFieldSkraceniNaziv = new JTextField();
 			textFieldSkraceniNaziv.setColumns(10);
@@ -158,7 +158,7 @@ public class DodajKursGUI extends JFrame {
 			btnDodaj = new JButton("Dodaj");
 			btnDodaj.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					unesiKurs();
+					GUIKontroler.unesiKurs();
 				}
 			});
 		}
@@ -175,7 +175,7 @@ public class DodajKursGUI extends JFrame {
 		}
 		return btnOdus;
 	}
-	private JSpinner getSpinnerSifra() {
+	public JSpinner getSpinnerSifra() {
 		if (spinnerSifra == null) {
 			spinnerSifra = new JSpinner();
 			spinnerSifra.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
@@ -183,29 +183,4 @@ public class DodajKursGUI extends JFrame {
 		return spinnerSifra;
 	}
 	
-	private void unesiKurs() {
-		try {
-			Valuta valuta = new Valuta();
-
-			// Punjenje podataka o valuti
-			valuta.setNaziv(textFieldNaziv.getText());
-			valuta.setSkraceniNaziv(textFieldSkraceniNaziv.getText());
-			valuta.setSifra((Integer)(spinnerSifra.getValue()));
-			valuta.setProdajni(Double.parseDouble(textFieldProdajniKurs.getText()));
-			valuta.setKupovni(Double.parseDouble(textFieldKupovniKurs.getText()));
-			valuta.setSrednji(Double.parseDouble(textFieldSrednjiKurs.getText()));
-			
-			// Dodavanje valute u kursnu listu
-			glavniProzor.sistem.dodajValutu(valuta);
-
-			// Osvezavanje glavnog prozora
-			glavniProzor.prikaziSveValute();
-			
-			//Zatvaranje DodajValutuGUI prozora
-			dispose();
-		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(contentPane, e1.getMessage(),
-					"Greska", JOptionPane.ERROR_MESSAGE);
-		}
-	}
 }
