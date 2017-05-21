@@ -8,10 +8,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 
-import sistemske_operacije.SOdodajValutu;
-import sistemske_operacije.SOizvrsiTransakciju;
-import sistemske_operacije.SOsacuvajFajl;
-import sistemske_operacije.SOucitajIzFajla;
+import menjacnica.sistemske_operacije.SOdodajValutu;
+import menjacnica.sistemske_operacije.SOizvrsiTransakciju;
+import menjacnica.sistemske_operacije.SOsacuvajFajl;
+import menjacnica.sistemske_operacije.SOucitajIzFajla;
 
 public class Menjacnica implements MenjacnicaInterface{
 	

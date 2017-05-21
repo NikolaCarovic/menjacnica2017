@@ -1,4 +1,4 @@
-package sistemske_operacije;
+package menjacnica.sistemske_operacije;
 
 import menjacnica.Valuta;
 
