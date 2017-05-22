@@ -9,7 +9,7 @@ import menjacnica.Valuta;
 
 public class SOucitajIzFajla {
 	
-	public static void izvrsi(LinkedList<Valuta> kursnaLista,String putanja){
+	public static LinkedList<Valuta> izvrsi(LinkedList<Valuta> kursnaLista,String putanja){
 		try{
 			ObjectInputStream in = new ObjectInputStream(
 					new BufferedInputStream(new FileInputStream(putanja)));
@@ -17,6 +17,7 @@ public class SOucitajIzFajla {
 			kursnaLista = (LinkedList<Valuta>)(in.readObject());
 			
 			in.close();
+			return kursnaLista;
 		}catch(Exception e){
 			throw new RuntimeException(e);
 		}

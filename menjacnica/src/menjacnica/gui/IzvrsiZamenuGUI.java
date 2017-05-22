@@ -50,7 +50,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private JLabel lblKonacniIznos;
 	private JTextField textFieldKonacniIznos;
 
-	private MenjacnicaGUI glavniProzor;
+	
 	private Valuta valuta;
 
 	/**
@@ -83,7 +83,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 		contentPane.add(getTextFieldKonacniIznos());
 		
 		//podesavanje
-		this.glavniProzor = glavniProzor;
+		
 		this.valuta = valuta;
 				
 		prikaziValutu();
