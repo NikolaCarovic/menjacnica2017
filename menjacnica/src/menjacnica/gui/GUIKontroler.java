@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 import menjacnica.Menjacnica;
+import menjacnica.MenjacnicaInterface;
 import menjacnica.Valuta;
 import menjacnica.gui.models.MenjacnicaTableModel;
 
@@ -21,7 +22,7 @@ public class GUIKontroler {
 	private static IzvrsiZamenuGUI izvrsiZamenu;
 	private static MenjacnicaTableModel model;
 
-	protected static Menjacnica sistem;
+	protected static MenjacnicaInterface sistem;
 
 	/**
 	 * Launch the application.
@@ -120,16 +121,16 @@ public class GUIKontroler {
 		}
 	}
 
-	public static void unesiKurs() {
+	public static void unesiKurs(String naziv, String skraceniNAziv, Object sifra, String prodajni, String kupovni,String srednji) {
 		try {
 			Valuta valuta = new Valuta();
 
-			valuta.setNaziv(dodajKurs.getTextFieldNaziv().getText());
-			valuta.setSkraceniNaziv(dodajKurs.getTextFieldSkraceniNaziv().getText());
-			valuta.setSifra((Integer) (dodajKurs.getSpinnerSifra().getValue()));
-			valuta.setProdajni(Double.parseDouble(dodajKurs.getTextFieldProdajniKurs().getText()));
-			valuta.setKupovni(Double.parseDouble(dodajKurs.getTextFieldKupovniKurs().getText()));
-			valuta.setSrednji(Double.parseDouble(dodajKurs.getTextFieldSrednjiKurs().getText()));
+			valuta.setNaziv(naziv);
+			valuta.setSkraceniNaziv(skraceniNAziv);
+			valuta.setSifra((Integer) sifra);
+			valuta.setProdajni(Double.parseDouble(prodajni));
+			valuta.setKupovni(Double.parseDouble(kupovni));
+			valuta.setSrednji(Double.parseDouble(srednji));
 
 			sistem.dodajValutu(valuta);
 
